@@ -1,0 +1,9 @@
+.github/
+├── ISSUE_TEMPLATE/
+│   ├── bug_report.md
+│   ├── feature_request.md
+├── PULL_REQUEST_TEMPLATE.md
+├── CODEOWNERS
+├── CONTRIBUTING.md
+├── workflows/
+│   ├── python-ci.yml
