@@ -1,0 +1,66 @@
+.vscode/
+├── settings.json
+├── launch.json
+├── extensions.json
+```
+
+{
+  "python.pythonPath": "${workspaceFolder}/venv/bin/python", // Adjust for virtual environments
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.testing.unittestEnabled": true,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./tests",
+    "-p",
+    "*_test.py"
+  ],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
+}
+```
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Debug Sacrifice Brain",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/core/sacrifice_brain.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Tests",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "args": ["-m", "unittest", "discover", "-s", "./tests", "-p", "*_test.py"]
+    }
+  ]
+}
+```
+
+{
+  "recommendations": [
+    "ms-python.python",        // Python extension
+    "ms-python.black-formatter", // Black formatter
+    "ms-python.vscode-pylance", // Pylance for type checking and IntelliSense
+    "esbenp.prettier-vscode",  // Prettier for formatting
+    "davidanson.vscode-markdownlint", // Markdown linting
+    "streetsidesoftware.code-spell-checker" // Spell checking
+  ]
+}
