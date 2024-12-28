@@ -46,6 +46,3 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install the required dependencies
 pip install -r requirements.txt
-
-
-       
