@@ -21,14 +21,31 @@ Features post-quantum encryption, self-healing mechanisms, and intrusion detecti
 
 # Getting Started
 1. Prerequisites
-Programming Language: Python 3.8+
-Dependencies: Listed in requirements.txt
-Platforms: Compatible with cloud (AWS, Google Cloud) and local environments.
+Programming Language:
+  - Python 3.8+
+  - Dependencies: Listed in requirements.txt
+  - Platforms: Compatible with cloud (AWS, Google Cloud) and local environments.
+
 2. Installation
-      ##
-   <tab><tab> git clone https://github.com/yourusername/SacrificeAI.git
+<div>
+  <pre>
+    <code id="codeBlock"> "git clone https://github.com/sacrifice-ai/SacrificeAI.git
+cd SacrificeAI
+"</code>
+  </pre>
+  
+### **Install dependencies**
+```bash
+# Clone the repository
+git clone https://github.com/sacrifice-ai/SacrificeAI.git
 cd SacrificeAI
 
+# Create a virtual environment (optional but recommended)
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install the required dependencies
+pip install -r requirements.txt
 
 
        
