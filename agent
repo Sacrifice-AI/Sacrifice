@@ -1,0 +1,90 @@
+"""
+Agent Module for Sacrifice AI
+
+This module defines the structure and functionality of individual agents
+that participate in decision-making within the multi-agent system.
+"""
+
+import random
+import logging
+
+
+class Agent:
+    """
+    Represents a single AI agent within the Sacrifice AI system.
+
+    Each agent has unique characteristics and contributes to decision-making
+    through its actions, evaluations, and interactions with other agents.
+    """
+
+    def __init__(self, agent_id, skill_level=None):
+        """
+        Initialize an Agent instance.
+
+        :param agent_id: Unique identifier for the agent.
+        :param skill_level: A numerical value representing the agent's skill.
+                            Defaults to a random value between 1 and 100.
+        """
+        self.agent_id = agent_id
+        self.skill_level = skill_level if skill_level is not None else random.randint(1, 100)
+        self.state = "idle"  # Possible states: "idle", "active", "waiting"
+        self.task = None
+
+    def assign_task(self, task):
+        """
+        Assign a task to the agent.
+
+        :param task: The task to be assigned.
+        """
+        logging.info(f"Agent {self.agent_id} assigned task: {task}")
+        self.task = task
+        self.state = "active"
+
+    def evaluate_task(self, task):
+        """
+        Evaluate the task based on the agent's skill level.
+
+        :param task: The task to evaluate.
+        :return: A numerical score representing the agent's evaluation.
+        """
+        task_complexity = task.get("complexity", 50)  # Default complexity is 50
+        performance = max(0, self.skill_level - task_complexity + random.randint(-10, 10))
+        logging.debug(f"Agent {self.agent_id} evaluated task {task['name']} with score {performance}")
+        return performance
+
+    def complete_task(self):
+        """
+        Mark the current task as completed and reset the agent's state.
+        """
+        if self.task:
+            logging.info(f"Agent {self.agent_id} completed task: {self.task['name']}")
+            self.task = None
+            self.state = "idle"
+        else:
+            logging.warning(f"Agent {self.agent_id} attempted to complete a task, but none was assigned.")
+
+    def get_status(self):
+        """
+        Retrieve the current status of the agent.
+
+        :return: A dictionary containing the agent's current state and task.
+        """
+        return {
+            "agent_id": self.agent_id,
+            "state": self.state,
+            "task": self.task if self.task else "No task assigned",
+            "skill_level": self.skill_level,
+        }
+
+
+# Example usage
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+
+    # Create an example agent
+    agent = Agent(agent_id="A1")
+
+    # Define a sample task
+    sample_task = {"name": "Optimize Resource Allocation", "complexity": 70}
+
+    # Assign, eva
